@@ -1,0 +1,31 @@
+security:
+    password_hashers:
+        App\Entity\User:
+            algorithm: auto
+
+    providers:
+        app_user_provider:
+            entity:
+                class: App\Entity\User
+                property: username
+
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        main:
+            lazy: true
+            provider: app_user_provider
+            stateless: true
+            json_login:
+                check_path: /api/login
+                username_path: username
+                password_path: password
+            logout:
+                path: /logout  # URL de déconnexion
+                target: /login  # URL vers laquelle l'utilisateur sera redirigé après la déconnexion
+                invalidate_session: true  # Supprime la session
+
+    access_control:
+        - { path: ^/api/register, roles: PUBLIC_ACCESS }
