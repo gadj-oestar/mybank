@@ -1,8 +1,8 @@
 
-import '../css/App.css';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import OperationCard from './OperationCard';
+
 
 function NavBar() {
   
@@ -14,9 +14,10 @@ function NavBar() {
   };
   
   return (
+    
     <nav>
-         <h1>myBank</h1>
-      <a href="#" className="nav-link">🏠 Dashboard</a>
+      <h1>myBank</h1>
+      <Link to="/" className="nav-link">🏠 Dashboard</Link>
       <Link to="/operation" className="nav-link"> 💳 Operations </Link>
       <Link to="/categories" className="nav-link">📂 Categories</Link>
       <Link to="/profile" className="nav-link">👤 Profile</Link>

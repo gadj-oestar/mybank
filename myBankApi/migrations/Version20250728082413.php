@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20250515175218 extends AbstractMigration
+final class Version20250728082413 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -21,10 +21,7 @@ final class Version20250515175218 extends AbstractMigration
     {
         // this up() migration is auto-generated, please modify it to your needs
         $this->addSql(<<<'SQL'
-            CREATE TABLE operation (id INT AUTO_INCREMENT NOT NULL, libelle VARCHAR(255) NOT NULL, montant DOUBLE PRECISION NOT NULL, date VARCHAR(255) NOT NULL, categorie VARCHAR(255) NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB
-        SQL);
-        $this->addSql(<<<'SQL'
-            CREATE UNIQUE INDEX UNIQ_8D93D649F85E0677 ON user (username)
+            CREATE TABLE categorie (id INT AUTO_INCREMENT NOT NULL, name VARCHAR(255) NOT NULL, description LONGTEXT NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB
         SQL);
     }
 
@@ -32,10 +29,7 @@ final class Version20250515175218 extends AbstractMigration
     {
         // this down() migration is auto-generated, please modify it to your needs
         $this->addSql(<<<'SQL'
-            DROP TABLE operation
-        SQL);
-        $this->addSql(<<<'SQL'
-            DROP INDEX UNIQ_8D93D649F85E0677 ON `user`
+            DROP TABLE categorie
         SQL);
     }
 }

@@ -22,8 +22,11 @@ class Operation
     #[ORM\Column(type: 'datetime')]
     private ?\DateTimeInterface $date = null;
 
+    // Ajout de la propriété categorie (string, longueur 255)
     #[ORM\Column(length: 255)]
     private ?string $categorie = null;
+
+    // --- Getters et setters ---
 
     public function getId(): ?int
     {
@@ -38,7 +41,6 @@ class Operation
     public function setLibelle(string $libelle): static
     {
         $this->libelle = $libelle;
-
         return $this;
     }
 
@@ -50,7 +52,6 @@ class Operation
     public function setMontant(float $montant): static
     {
         $this->montant = $montant;
-
         return $this;
     }
 
@@ -59,7 +60,7 @@ class Operation
         return $this->date;
     }
 
-    public function setDate(\DateTimeInterface $date): self
+    public function setDate(\DateTimeInterface $date): static
     {
         $this->date = $date;
         return $this;
@@ -73,7 +74,6 @@ class Operation
     public function setCategorie(string $categorie): static
     {
         $this->categorie = $categorie;
-
         return $this;
     }
 }

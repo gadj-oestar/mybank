@@ -1,6 +1,5 @@
 {
     "require": {
-        "symfony/uid": "^7.2",
-        "nelmio/cors-bundle": "^2.5"
+        "symfony/uid": "^7.2"
     }
 }

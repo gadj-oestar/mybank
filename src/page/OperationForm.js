@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import '../css/OperationForm.css';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import '../css/OperationForm.css'; // Assuming you have a CSS file for styling
+
 
 function OperationForm() {
   const navigate = useNavigate();
@@ -22,7 +24,6 @@ function OperationForm() {
     try {
       await axios.post('http://127.0.0.1:8000/api/operations', formData);
       navigate('/operation'); // Rediriger vers la liste des opérations après création
-     
     } catch (err) {
       console.error('Erreur création opération', err.response?.data || err.message);
     }
@@ -38,6 +39,7 @@ function OperationForm() {
         <input name="categorie" placeholder="Catégorie" onChange={handleChange} required />
         <button type="submit">💾 Créer</button>
       </form>
+      <Link to="/" className="btn-back">Retour</Link>
     </div>
   );
 }

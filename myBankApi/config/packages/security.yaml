@@ -17,15 +17,16 @@ security:
         main:
             lazy: true
             provider: app_user_provider
-            stateless: true
+            stateless: false
             json_login:
                 check_path: /api/login
                 username_path: username
                 password_path: password
             logout:
-                path: /logout  # URL de déconnexion
-                target: /login  # URL vers laquelle l'utilisateur sera redirigé après la déconnexion
-                invalidate_session: true  # Supprime la session
+                path: /api/logout
+                invalidate_session: true
 
     access_control:
+        - { path: ^/api/login, roles: PUBLIC_ACCESS }
         - { path: ^/api/register, roles: PUBLIC_ACCESS }
+        - { path: ^/api/profil, roles: IS_AUTHENTICATED_FULLY }
