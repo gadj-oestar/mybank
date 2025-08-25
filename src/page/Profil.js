@@ -8,25 +8,22 @@ function Profil() {
   const [message, setMessage] = useState('');
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    fetch('http://127.0.0.1:8000/api/profil', {
-      method: 'GET',
-      credentials: 'include',
-      headers: { Accept: 'application/json' },
+useEffect(() => {
+  fetch('http://127.0.0.1:8000/api/profil', {
+    method: 'GET',
+    headers: { Accept: 'application/json' },
+  })
+    .then(res => res.json())
+    .then(data => {
+      setUsername(data.username);
+      setPassword(data.password); // récupère le mot de passe pour test
+      setLoading(false);
     })
-      .then(res => {
-        if (!res.ok) throw new Error('Non authentifié');
-        return res.json();
-      })
-      .then(data => {
-        setUsername(data.username);
-        setLoading(false);
-      })
-      .catch(() => {
-        setMessage('Erreur lors du chargement du profil');
-        setLoading(false);
-      });
-  }, []);
+    .catch(() => {
+      setMessage('Erreur lors du chargement du profil');
+      setLoading(false);
+    });
+}, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();

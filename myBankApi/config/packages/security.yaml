@@ -1,32 +1,44 @@
 security:
+    # Encoders / password hashers
     password_hashers:
         App\Entity\User:
             algorithm: auto
 
+    # Providers utilisateurs
     providers:
         app_user_provider:
             entity:
                 class: App\Entity\User
                 property: username
 
+    # Firewalls
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
+            
 
-        main:
-            lazy: true
-            provider: app_user_provider
-            stateless: false
+        api:
+            pattern: ^/api/
+            stateless: true
             json_login:
                 check_path: /api/login
                 username_path: username
                 password_path: password
+                success_handler: App\Security\LoginSuccessHandler
+                failure_handler: App\Security\LoginFailureHandler
+
+        main:
+            lazy: true
+            provider: app_user_provider
+            form_login:
+                login_path: login
+                check_path: login
             logout:
-                path: /api/logout
+                path: logout
                 invalidate_session: true
 
+    # Contrôle d’accès
     access_control:
-        - { path: ^/api/login, roles: PUBLIC_ACCESS }
-        - { path: ^/api/register, roles: PUBLIC_ACCESS }
-        - { path: ^/api/profil, roles: IS_AUTHENTICATED_FULLY }
+       
+
