@@ -23,7 +23,6 @@ class ProfilController extends AbstractController
 
         return new JsonResponse([
             'username' => $user->getUsername(),
-            'password' => $user->getPassword(), // pour test uniquement
         ]);
     }
 

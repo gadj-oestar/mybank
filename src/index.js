@@ -1,30 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, HashRouter } from 'react-router-dom';
 import App from './App';
-import Login from './page/login';
-import Signin from './page/singIn';
-import OperationCard from './page/OperationCard';
-import OperationForm from './page/OperationForm';
-import EditOperation from './page/EditOperation';
-import Profile from './page/Profil';
-import Categorie from './page/Categorie';
-const root = ReactDOM.createRoot(document.getElementById('root'));
+import { DEMO } from './lib/api';
+import './css/styles.css';
 
-root.render(
+// La démo est servie en fichiers statiques : le routage par hash évite les 404 au rechargement.
+const Router = DEMO ? HashRouter : BrowserRouter;
+
+ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<App />} />
-        <Route path="/" element={<OperationCard />} />   
-        <Route path="/operation" element={<OperationCard />} />
-        <Route path="/operation/new" element={<OperationForm />} />
-        <Route path="/operation/edit/:id" element={<EditOperation />} />
-        <Route path="/signin" element={<Signin />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/categories" element={<Categorie />} />
-      </Routes>
-    </BrowserRouter>
+    <Router>
+      <App />
+    </Router>
   </React.StrictMode>
 );
