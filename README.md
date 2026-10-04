@@ -69,3 +69,5 @@ Erreurs fréquentes et solutions
 ## Démo sans back-end
 
 `npm run build:demo` génère dans `build/` une version statique du front qui simule l'API en mémoire (données d'exemple, routage par hash). Pratique pour présenter l'interface sans Docker ni base de données.
+
+La démo est publiée automatiquement sur GitHub Pages à chaque push sur `main` (workflow `.github/workflows/deploy-demo.yml`) : https://gadj-oestar.github.io/mybank/
