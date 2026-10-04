@@ -3,6 +3,7 @@ import { NavLink, useLocation, useNavigate, useOutlet } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import { LayoutDashboard, ArrowLeftRight, Tags, UserRound, LogOut, Menu, X } from 'lucide-react';
 import { page } from './motion';
+import { DEMO } from '../lib/api';
 
 const links = [
   { to: '/', label: 'Tableau de bord', icon: LayoutDashboard, end: true },
@@ -23,6 +24,7 @@ export default function Layout() {
         <div className="brand">
           <span className="brand-mark">m</span>
           <span>myBank</span>
+          {DEMO && <span className="demo-badge">Démo</span>}
           <button className="icon-btn menu-toggle" onClick={() => setOpen(!open)} aria-label="Menu">
             {open ? <X size={20} /> : <Menu size={20} />}
           </button>

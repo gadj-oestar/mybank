@@ -1,4 +1,7 @@
 import axios from 'axios';
+import demoAdapter from './demo';
+
+export const DEMO = process.env.REACT_APP_DEMO === 'true';
 
 // Une seule origine pour toutes les requêtes : le cookie JWT posé au login
 // n'est renvoyé que si l'hôte est identique (localhost et 127.0.0.1 diffèrent).
@@ -6,6 +9,7 @@ const api = axios.create({
   baseURL: process.env.REACT_APP_API_URL || 'http://localhost:8000/api',
   withCredentials: true,
   headers: { Accept: 'application/json' },
+  ...(DEMO && { adapter: demoAdapter }),
 });
 
 export const getOperations = () => api.get('/operations').then((r) => r.data);

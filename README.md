@@ -66,3 +66,6 @@ Erreurs fréquentes et solutions
 
 ❌ Erreur 500 Internal Server Error
 ➡️ Vérifiez la configuration de votre API et vos entités Symfony.
+## Démo sans back-end
+
+`npm run build:demo` génère dans `build/` une version statique du front qui simule l'API en mémoire (données d'exemple, routage par hash). Pratique pour présenter l'interface sans Docker ni base de données.
