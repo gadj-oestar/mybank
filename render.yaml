@@ -1,0 +1,11 @@
+# Blueprint Render : publie le front React en site statique.
+# Le build utilise le mode démo (API simulée), le back-end Symfony n'étant pas déployé.
+services:
+  - type: web
+    name: mybank
+    runtime: static
+    buildCommand: npm ci && npm run build:demo
+    staticPublishPath: build
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
